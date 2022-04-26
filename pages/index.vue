@@ -1,7 +1,7 @@
 <template>
   
 <div>
-  <h3>Control</h3>
+  <h3>Control de Flujo Másico</h3>
     <button @click="temperatura--">Disminuir</button>
     <span>{{temperatura}}</span><span> °C</span>
     <button @click="temperatura++">Aumentar</button>
