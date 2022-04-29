@@ -41,7 +41,7 @@ export default {
     font-family: Arial;
   }
   .warning{
-    color:yellow
+    color:rgb(198, 140, 16)
   }
   .danger{
     color: red
