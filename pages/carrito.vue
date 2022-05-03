@@ -10,10 +10,14 @@
         </option>
     </select>
 
+    <input v-model.number="cantidad" type="number" style="width: 40px">
     <button @click="agregarProducto()">Agregar</button>
 <br><br>
-   Carrito:{{carrito}}
-
+   
+Carrito:
+<pre>
+{{carrito}}
+</pre>
    
   </div>
 </template>
@@ -23,6 +27,7 @@ export default {
     data(){
         return {
             productoSeleccionado: -1,
+            cantidad: 0,
             productos: [
                 {
                     id: 1,
@@ -36,7 +41,7 @@ export default {
                     nombre: "Libro A",
                     precio: 12.40,
                     max: 2,
-                    stock: 10           
+                    stock: 2          
                 },
                 {
                     id: 3,
@@ -58,7 +63,8 @@ export default {
     },
     methods: {
         agregarProducto(){
-            const producto = this.productos[this.productoSeleccionado];
+            let producto = this.productos[this.productoSeleccionado];
+            producto.cantidad = this.cantidad;
             this.carrito.push(producto);
         }
     }
