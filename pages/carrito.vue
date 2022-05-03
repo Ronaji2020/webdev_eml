@@ -1,14 +1,20 @@
 <template>
   <div style="padding: 20px">
+
+       <h3>Productos ({{productos.length}})</h3>
     <!-- FORMULARIO -->
     <select v-model="productoSeleccionado">
         <option disabled  value="-1">Selecciona un Producto</option>
-        <option v-for="producto in productos" :value="producto.id" :key="producto.id">
+         <option v-for="producto, index in productos" :value="index" :key="producto.id">
             {{producto.nombre}}
         </option>
     </select>
 
-    {{productoSeleccionado}}
+    <button @click="agregarProducto()">Agregar</button>
+<br><br>
+   Carrito:{{carrito}}
+
+   
   </div>
 </template>
 
@@ -46,7 +52,14 @@ export default {
                     max: 2,
                     stock: 100           
                 },
-            ]
+            ],
+             carrito: []
+        }
+    },
+    methods: {
+        agregarProducto(){
+            const producto = this.productos[this.productoSeleccionado];
+            this.carrito.push(producto);
         }
     }
 };
