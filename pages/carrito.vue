@@ -1,7 +1,7 @@
 <template>
   <div style="padding: 20px">
 
-       <h3>Productos ({{productos.length}})</h3>
+    <h3>Productos ({{productos.length}}){{total}} {{total}} {{total}} {{total}} {{total}} {{total}}</h3>
     <!-- FORMULARIO -->
     <select @change="resetearCantidad()" v-model="productoSeleccionado">
         <option disabled  value="-1">Selecciona un Producto</option>
@@ -12,7 +12,8 @@
 
     <input v-if="productoSeleccionado != -1" v-model.number="cantidad" min="1" :max="productos[productoSeleccionado].stock" type="number" style="width: 40px">
 
-    <button @click="agregarProducto()">Agregar</button>
+    <button @click="agregarProducto()">Agregar</button> 
+    <span v-if="productoSeleccionado != -1">{{productos[productoSeleccionado].precio * cantidad}}</span> 
 <br><br>
    
 Carrito:
@@ -40,14 +41,14 @@ export default {
                 {
                     id: 2,
                     nombre: "Libro A",
-                    precio: 12.40,
+                    precio: 12.10,
                     max: 2,
                     stock: 2          
                 },
                 {
                     id: 3,
                     nombre: "Mapa",
-                    precio: 10.40,
+                    precio: 10.70,
                     max: 100,
                     stock: 5           
                 },
@@ -62,6 +63,19 @@ export default {
              carrito: []
         }
     },
+
+    computed: {
+        total(){
+            console.log("TOTAL HA SIDO LLAMADO");
+            var total = 0;
+            this.carrito.forEach(producto => {
+              total = total + (producto.precio * producto.cantidad)
+            });
+            return ' $' + total;
+        },
+    },
+
+
     methods: {
         resetearCantidad(){
             this.cantidad = 1;
