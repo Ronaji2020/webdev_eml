@@ -11,9 +11,7 @@
       Promedio: {{nuevoAlumno.promedio}}
     </div>
     <br>
-<pre>
-{{nuevoAlumno}}
-</pre>
+
 
 
     <label for="">Nombre:</label><br />
@@ -62,14 +60,21 @@ export default {
     };    
   },
 
+  mounted(){
+    this.alumnos = JSON.parse(window.localStorage.getItem("alumnado"));
+  },
+
 
 methods:{
     agregarNuevoAlumno(){
-      //const nuevoAlumnoCopy = JSON.parse(JSON.stringify(this.nuevoAlumno)) ;
+     
       const { ...nuevoAlumnoCopy } = this.nuevoAlumno;
+      this.alumnos = this.alumnos || []; 
       this.alumnos.push(nuevoAlumnoCopy);
+
+      window.localStorage.setItem("alumnado", JSON.stringify(this.alumnos));
     }
-  }
+   }
   };
 
 </script>
