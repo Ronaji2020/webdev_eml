@@ -1,7 +1,7 @@
 <template>
   <div style="padding: 20px">
 
-    <h3>Productos ({{productos.length}}){{total}} {{total}} {{total}} {{total}} {{total}} {{total}}</h3>
+    <h3 :class="limit">Productos ({{productos.length}}){{total}}</h3>
     <!-- FORMULARIO -->
     <select @change="resetearCantidad()" v-model="productoSeleccionado">
         <option disabled  value="-1">Selecciona un Producto</option>
@@ -48,7 +48,7 @@ export default {
                 {
                     id: 3,
                     nombre: "Mapa",
-                    precio: 10.70,
+                    precio: 7.70,
                     max: 100,
                     stock: 5           
                 },
@@ -65,6 +65,9 @@ export default {
     },
 
     computed: {
+        limit(){
+            return  this.productoSeleccionado != -1 ? this.productos[this.productoSeleccionado].precio >= 10 ? 'danger' : 'success' : '' 
+        },
         total(){
             console.log("TOTAL HA SIDO LLAMADO");
             var total = 0;
@@ -90,4 +93,11 @@ export default {
 </script>
 
 <style>
+.danger{
+        color: red
+    }
+    .success{
+        color:green
+    }
+
 </style>
