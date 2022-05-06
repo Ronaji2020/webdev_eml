@@ -60,21 +60,21 @@ export default {
     };    
   },
 
-  mounted(){
+  mounted() {
     this.alumnos = JSON.parse(window.localStorage.getItem("alumnado"));
   },
 
 
-methods:{
-    agregarNuevoAlumno(){
+methods: {
+    agregarNuevoAlumno() {
      
       const { ...nuevoAlumnoCopy } = this.nuevoAlumno;
       this.alumnos = this.alumnos || []; 
       this.alumnos.push(nuevoAlumnoCopy);
 
       window.localStorage.setItem("alumnado", JSON.stringify(this.alumnos));
-    }
-   }
+    },
+   },
   };
 
 </script>
