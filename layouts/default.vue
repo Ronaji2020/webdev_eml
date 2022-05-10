@@ -1,9 +1,9 @@
 <template>
     <div>
         <nav>
-            <a href="/">Home</a>
-            <a href="/escuela">Escuela</a>
-            <a href="/carrito">Carrito</a>
+            <nuxt-link to="/">Home</nuxt-link>
+            <nuxt-link to="/escuela">Escuela</nuxt-link>
+            <nuxt-link to="/carrito">Carrito</nuxt-link>
         </nav>
 
         <nuxt></nuxt>
@@ -13,9 +13,8 @@
 </template>
 
 <script>
-export default {
+export default {};
 
-}
 </script>
 
 <style>
